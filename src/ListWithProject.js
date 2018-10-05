@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import EmployeeProfile from './EmployeeProfile';
+// import Button from '@material-ui/core/Button';
 
 const project = [
   { id: 'P1', name: 'Factory', description: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default modpr text, and a search for lorem ipsum will uncover many web sites still in their infancy. ' },
@@ -33,7 +30,6 @@ class ListWithProject extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <Grid container spacing={16}>
