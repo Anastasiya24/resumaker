@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 import Typography from '@material-ui/core/Typography';
 
-const colors = ["#ff4f66", "#7971ea", "#5900d8"];
+// const colors = ["#ff4f66", "#7971ea", "#5900d8"];
 const project = [
     { color: "#ff4f66", id: 'P1', name: 'Factory', description: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default modpr text, and a search for lorem ipsum will uncover many web sites still in their infancy. ' },
     { color: "#7971ea", id: 'P2', name: 'Resumaker', description: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour' },
@@ -27,6 +27,7 @@ class ProjectAnimated extends Component {
     render() {
         return (
             <div>
+                <h1>Flipper</h1>
                 <Typography variant='headline'>
                     Projects
                 </Typography>
@@ -46,9 +47,8 @@ class ProjectAnimated extends Component {
                                         <div>
                                             <Flipped flipId={`${this.state.focused}-text`} translate>
                                                 <div>
-                                                    <span>{this.state.activeProject.name}</span>
-                                                    <h1>Yes</h1>
-                                                    <h3>{this.state.activeProject.description}</h3>
+                                                    <Typography variant='display2' style={{display: 'flex', justifyContent: 'center'}}>{this.state.activeProject.name}</Typography>
+                                                    <Typography variant='headline' style={{ margin: 30 }} >The origin description{this.state.activeProject.description}</Typography>
                                                     {projectEmployees.map(em =>
                                                         <div key={em.id}
                                                             style={{ margin: 30, cursor: 'pointer', padding: 10, border: '2px solid #E4F4F6' }}
