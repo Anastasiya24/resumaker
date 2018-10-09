@@ -81,3 +81,21 @@ code {
   border-radius: 2px;
   margin: 0 0.5rem;
 }
+
+/*  */
+.no {
+  width:500px;
+  padding: 50px;
+	transition: width 1s;
+	-webkit-transition: width 1s; /* Safari and Chrome */
+	-moz-transition: width 1s; /* Firefox 4 */
+	-o-transition: width 1s; /* Opera */
+}
+.es {
+  width:300px;
+  padding: 50px;
+	transition: width 1s;
+	-webkit-transition: width 1s; /* Safari and Chrome */
+	-moz-transition: width 1s; /* Firefox 4 */
+	-o-transition: width 1s; /* Opera */
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import QueueAnim from 'rc-queue-anim';
 // import Button from '@material-ui/core/Button';
 
 const project = [
@@ -25,8 +26,13 @@ class ListWithProject extends Component {
   };
 
   onLoadProjectEmployees(projectId) {
-    this.setState({ onClickToProject: true })
-    console.log(`Project ${projectId}`)
+    if (this.state.onClickToProject)
+      this.setState({ onClickToProject: false });
+    else this.setState({ onClickToProject: true })
+  };
+
+  onClickProject(id) {
+    this.props.history.push(`/employee/${id}`);
   }
 
   render() {
@@ -37,7 +43,8 @@ class ListWithProject extends Component {
             {project.map(pr =>
               <div key={pr.id}
                 style={{ margin: 30, cursor: 'pointer', padding: 10, border: '2px solid #E4F4F6' }}
-                onClick={() => this.onLoadProjectEmployees(pr.id)}
+                onClick={this.onLoadProjectEmployees.bind(this,pr.id)}
+                // className={this.state.onClickToProject ? 'es' : 'no'}
               >
                 <Typography variant='headline'>
                   {pr.name}
@@ -50,16 +57,19 @@ class ListWithProject extends Component {
           </Grid>
           {this.state.onClickToProject &&
             <Grid item xs={6}>
+              {/* Version 1 */}
+              <QueueAnim>
               {projectEmployees.map(em =>
                 <div key={em.id}
                   style={{ margin: 30, cursor: 'pointer', padding: 10, border: '2px solid #E4F4F6' }}
-                  onClick={() => this.props.history.push(`/employee/${em.id}`)}
+                  onClick={this.onClickProject.bind(this, em.id)}
                 >
                   <Typography variant='headline'>
                     {em.name} {em.lastName}
                   </Typography>
                 </div>
               )}
+              </QueueAnim>
             </Grid>
           }
         </Grid>
