@@ -60,12 +60,13 @@ class CreateResume extends Component {
                             Employee's projects
                         </Typography>
                         <ProjectListInResume />
-                        <Project />
+                        
+                        {/* <Project /> */}
                     </center>
                 </div>
                 <center style={{ marginTop: '20px' }}>
                     <Button variant="outlined" color="secondary" onClick={this.onClickAddResume}>
-                        Add the resume
+                        Export CV
                     </Button>
                     {this.state.openPopup}
                 </center>
