@@ -41,15 +41,18 @@ const menuItems = [
 class Header extends React.Component {
     state = {
         anchorEl: null,
+        elementId: null
     };
 
-    handleClick = event => {
-        this.setState({ anchorEl: event.currentTarget });
-        console.log('ew:', event.currentTarget)
+    handleClick = (event, id) => {
+        this.setState({ 
+            anchorEl: event.currentTarget,
+            elementId: id
+        });
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: null });
+        this.setState({ anchorEl: null, elementId: null });
     };
 
     onClickToProfile = () => {
@@ -75,16 +78,15 @@ class Header extends React.Component {
                             <div key={item.id} style={{ display: 'inline-block', margin: 10 }}>
                                 <Button
                                     aria-owns={anchorEl ? `${item.id}` : null}
-                                    aria-haspopup="true"
-                                    onClick={this.handleClick}
+                                    onClick={(event) => this.handleClick(event, item.id)}
                                 >
                                     {item.text}
                                 </Button>
                                 <Menu
                                     id={item.id}
                                     anchorEl={anchorEl}
-                                    // (Nastya !!) ...Menu items
-                                    open={anchorEl === `${item.id}` ? true : false}
+                                    // open={Boolean(anchorEl)}
+                                    open={this.state.elementId === item.id ? true : false }
                                     onClose={this.handleClose}
                                 >
                                     {item.items.map(el =>

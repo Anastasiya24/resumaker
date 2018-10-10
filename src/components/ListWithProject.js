@@ -35,12 +35,6 @@ const project = [
   },
 ];
 
-const projectEmployees = [
-  { id: 'E1', name: 'Artur', lastName: 'Ivanov' },
-  { id: 'E2', name: 'Artem', lastName: 'Ivanov' },
-  { id: 'E3', name: 'Andrey', lastName: 'Ivanov' }
-];
-
 class ListWithProject extends Component {
   constructor(props) {
     super(props);

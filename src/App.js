@@ -5,7 +5,7 @@ import ListWithProject from './components/ListWithProject';
 import EmployeeProfile from './components/EmployeeProfile';
 import ProjectAnimated from './components/ProjectAnimated';
 import ListExample from './components/AnimeJs';
-import ProjectList from './components/ProjectList';
+import Test from './components/Test';
 // import Menu from './components/Menu';
 import Header from './components/Header';
 
@@ -29,7 +29,7 @@ class App extends Component {
               <Route path="/employee/:employeeId" exact component={EmployeeProfile} />
               <Route path="/flipper" exact component={ProjectAnimated} />
               <Route path="/animejs" exact component={ListExample} />
-              <Route path="/main_anime" component={ProjectList} />
+              <Route path="/main_anime" component={Test} />
             </Switch>
           {/* </Grid>
         </Grid> */}

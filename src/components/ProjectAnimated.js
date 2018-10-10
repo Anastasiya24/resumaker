@@ -27,7 +27,6 @@ class ProjectAnimated extends Component {
     render() {
         return (
             <div>
-                <h1>Flipper</h1>
                 <Typography variant='headline'>
                     Projects
                 </Typography>
