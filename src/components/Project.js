@@ -30,7 +30,7 @@ const styles = {
 function Project(props) {
     const { classes } = props;
     return (
-        <Card className={classes.card}>
+        <Card className={classes.card} style={{ marginTop: '20px' }}>
             <CardContent>
                 <Typography variant="headline" component="p">
                     Project

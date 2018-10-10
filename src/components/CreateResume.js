@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Project from './Project';
 import PopupAddResume from './PopupAddResume';
+import ProjectListInResume from './ProjectListInResume'
 
 class CreateResume extends Component {
     constructor(props) {
@@ -55,6 +56,10 @@ class CreateResume extends Component {
                 </div>
                 <div className='projectInfo'>
                     <center>
+                        <Typography variant="subheading" style={{ marginTop: '20px' }}>
+                            Employee's projects
+                        </Typography>
+                        <ProjectListInResume />
                         <Project />
                     </center>
                 </div>

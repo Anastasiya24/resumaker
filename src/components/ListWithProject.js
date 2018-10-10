@@ -6,9 +6,33 @@ import QueueAnim from 'rc-queue-anim';
 // import Button from '@material-ui/core/Button';
 
 const project = [
-  { id: 'P1', name: 'Factory', description: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default modpr text, and a search for lorem ipsum will uncover many web sites still in their infancy. ' },
-  { id: 'P2', name: 'Resumaker', description: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour' },
-  { id: 'P3', name: 'Player', description: 'Contrary to popular bprief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure ' },
+  {
+    id: 'P1', name: 'Factory',
+    projectEmployees: [
+      { id: 'E1', name: 'Artur', lastName: 'Ivanov' },
+      { id: 'E2', name: 'Artem', lastName: 'Ivanov' },
+      { id: 'E3', name: 'Andrey', lastName: 'Ivanov' }
+    ],
+    description: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default modpr text, and a search for lorem ipsum will uncover many web sites still in their infancy. '
+  },
+  {
+    id: 'P2', name: 'Resumaker',
+    projectEmployees: [
+      { id: 'E1', name: 'Valery', lastName: 'Ivanov' },
+      { id: 'E2', name: 'Vitalya', lastName: 'Ivanov' },
+      { id: 'E3', name: 'Victor', lastName: 'Ivanov' }
+    ],
+    description: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour'
+  },
+  {
+    id: 'P3', name: 'Player',
+    projectEmployees: [
+      { id: 'E1', name: 'Dima', lastName: 'Ivanov' },
+      { id: 'E2', name: 'Dan', lastName: 'Ivanov' },
+      { id: 'E3', name: 'Denis', lastName: 'Ivanov' }
+    ],
+    description: 'Contrary to popular bprief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure '
+  },
 ];
 
 const projectEmployees = [
@@ -21,14 +45,20 @@ class ListWithProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      onClickToProject: false
+      projectNumber: null
     }
   };
 
   onLoadProjectEmployees(projectId) {
-    if (this.state.onClickToProject)
-      this.setState({ onClickToProject: false });
-    else this.setState({ onClickToProject: true })
+    if (this.state.projectNumber === projectId)
+      this.setState({
+        projectNumber: null
+      });
+    else {
+      this.setState({
+        projectNumber: projectId
+      });
+    }
   };
 
   onClickProject(id) {
@@ -36,6 +66,7 @@ class ListWithProject extends Component {
   }
 
   render() {
+    const employeesList = (this.state.projectNumber ? project.find(el => el.id === this.state.projectNumber).projectEmployees : [])
     return (
       <div>
         <Grid container spacing={16}>
@@ -43,8 +74,7 @@ class ListWithProject extends Component {
             {project.map(pr =>
               <div key={pr.id}
                 style={{ margin: 30, cursor: 'pointer', padding: 10, border: '2px solid #E4F4F6' }}
-                onClick={this.onLoadProjectEmployees.bind(this,pr.id)}
-                // className={this.state.onClickToProject ? 'es' : 'no'}
+                onClick={this.onLoadProjectEmployees.bind(this, pr.id)}
               >
                 <Typography variant='headline'>
                   {pr.name}
@@ -55,20 +85,19 @@ class ListWithProject extends Component {
               </div>
             )}
           </Grid>
-          {this.state.onClickToProject &&
+          {employeesList &&
             <Grid item xs={6}>
-              {/* Version 1 */}
               <QueueAnim>
-              {projectEmployees.map(em =>
-                <div key={em.id}
-                  style={{ margin: 30, cursor: 'pointer', padding: 10, border: '2px solid #E4F4F6' }}
-                  onClick={this.onClickProject.bind(this, em.id)}
-                >
-                  <Typography variant='headline'>
-                    {em.name} {em.lastName}
-                  </Typography>
-                </div>
-              )}
+                {employeesList.map(em =>
+                  <div key={em.id}
+                    style={{ margin: 30, cursor: 'pointer', padding: 10, border: '2px solid #E4F4F6' }}
+                    onClick={this.onClickProject.bind(this, em.id)}
+                  >
+                    <Typography variant='headline'>
+                      {em.name} {em.lastName}
+                    </Typography>
+                  </div>
+                )}
               </QueueAnim>
             </Grid>
           }
