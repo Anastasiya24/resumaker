@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = {
     card: {
@@ -27,15 +27,21 @@ const styles = {
     },
 };
 
-function Project(props) {
+function NewProjectCard(props) {
+    const { classes } = props;
     return (
-        <Dialog
-            open={true}
-            onClose={props.handleClose}
-            aria-labelledby="form-dialog-title"
-        >
-            <DialogTitle id="form-dialog-title">Project</DialogTitle>
-            <DialogContent>
+        <Card className={classes.card} style={{ marginTop: '20px' }}>
+            <CardContent>
+                <Typography variant="headline" component="p">
+                    Project
+                <svg style={{ padding: 10, width: 50, height: 50, cursor: 'pointer' }}
+                        onClick={props.onCloseNewProject}
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                >
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" /><path d="M0 0h24v24H0z" fill="none" />
+                </svg>
+                </Typography>
                 <TextField
                     id="multiline-flexible"
                     label="Description"
@@ -43,7 +49,6 @@ function Project(props) {
                     rowsMax="5"
                     placeholder="Description"
                 />
-                <br />
                 <TextField
                     id="multiline-flexible"
                     label="Technology"
@@ -51,7 +56,6 @@ function Project(props) {
                     rowsMax="5"
                     placeholder="Technology"
                 />
-                <br />                
                 <TextField
                     id="multiline-flexible"
                     label="Responsibility"
@@ -59,10 +63,12 @@ function Project(props) {
                     rowsMax="5"
                     placeholder="Responsibility"
                 />
-            </DialogContent>
-            <DialogActions>
+            </CardContent>
+            <CardActions>
                 <Button size="small">
-                    <svg xmlns="http://www.w3.org/2000/svg"
+                    <svg style={{cursor: 'pointer'}}
+                        onClick={props.onClickAddedResume}
+                        xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
@@ -70,13 +76,13 @@ function Project(props) {
                         <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" /><path d="M0 0h24v24H0z" fill="none" />
                     </svg>
                 </Button>
-            </DialogActions>
-        </Dialog>
+            </CardActions>
+        </Card>
     );
 }
 
-Project.propTypes = {
+NewProjectCard.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Project);
+export default withStyles(styles)(NewProjectCard);
